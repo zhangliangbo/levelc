@@ -1,30 +1,29 @@
 package xxl;
 
-import io.vavr.collection.List;
+import io.vavr.Tuple2;
+import xxl.mathematica.video.VideoFrameList;
 
-import java.util.function.BiFunction;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.Consumer;
 
 public class Main {
-
-
-    public static void main(String[] args) throws InterruptedException {
-        System.err.println(
-                List.rangeBy(0, 10, 1)
-                        .reduce(new BiFunction<Integer, Integer, Integer>() {
-                            @Override
-                            public Integer apply(Integer integer, Integer integer2) {
-                                return integer + integer2;
-                            }
-                        })
-        );
-        System.err.println(
-                List.rangeBy(0, 10, 1)
-                        .fold(0, new BiFunction<Integer, Integer, Integer>() {
-                            @Override
-                            public Integer apply(Integer integer, Integer integer2) {
-                                return integer + integer2;
-                            }
-                        })
-        );
+    public static void main(String[] args) throws Exception {
+        long start = System.currentTimeMillis();
+        io.vavr.collection.List.ofAll(VideoFrameList.videoFrameList("D:\\pet.mp4", 10, BufferedImage.class))
+                .zipWithIndex()
+                .forEach(new Consumer<Tuple2<BufferedImage, Integer>>() {
+                    @Override
+                    public void accept(Tuple2<BufferedImage, Integer> t) {
+                        try {
+                            ImageIO.write(t._1, "jpg", new File("D:\\pet" + t._2 + ".jpg"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        System.out.println("time: " + (System.currentTimeMillis() - start));
     }
 }

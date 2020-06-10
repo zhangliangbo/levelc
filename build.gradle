@@ -31,6 +31,8 @@ configurations {
 }
 
 dependencies {
+    //level0
+    implementation 'xxl.level0:level0:1.0.0-SNAPSHOT'
     //function programming
     implementation 'io.vavr:vavr:0.10.3'
     //javacv
