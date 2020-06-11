@@ -3,6 +3,7 @@ package xxl.mathematica.video;
 import io.vavr.control.Try;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
+import xxl.mathematica.Rule;
 import xxl.mathematica.list.Range;
 import xxl.mathematica.list.Subdivide;
 import xxl.mathematica.random.RandomSample;
@@ -23,10 +24,10 @@ public class VideoFrameList {
      * @param uniform   是否均匀
      * @return
      */
-    public static List<Frame> videoFrameList(String videoFile, int n, boolean uniform) {
-        return Try.ofCallable(new Callable<List<Frame>>() {
+    public static List<Rule<Integer, Frame>> videoFrameList(String videoFile, int n, boolean uniform) {
+        return Try.ofCallable(new Callable<List<Rule<Integer, Frame>>>() {
             @Override
-            public List<Frame> call() throws Exception {
+            public List<Rule<Integer, Frame>> call() throws Exception {
                 FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(new File(videoFile));
                 grabber.start();
                 int len = grabber.getLengthInVideoFrames();
