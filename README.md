@@ -1,4 +1,4 @@
 # java调用c/c++代码
-## rabbitmq
+## _rabbitmq_
 ## kafka
 ## redis
