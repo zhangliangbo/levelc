@@ -35,7 +35,7 @@ public class VideoFrameMap {
                 while (i < frameCount) {
                     Frame frame = grabber.grabImage();
                     if (frame != null) {
-                        res.add(f.apply(i, frame));
+                        res.add(f.apply(i, frame.clone()));
                     }
                     ++i;
                 }
