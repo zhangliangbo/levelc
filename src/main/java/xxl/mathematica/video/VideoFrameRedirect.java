@@ -47,7 +47,7 @@ public class VideoFrameRedirect {
                     recorder.setTimestamp(frame.timestamp);
                     //进行图片处理
                     if (f != null) {
-                        frame = f.apply(frame);
+                        frame = f.apply(frame.clone());
                     }
                     recorder.record(frame);
                 }
