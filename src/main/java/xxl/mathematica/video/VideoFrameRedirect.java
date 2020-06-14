@@ -13,7 +13,14 @@ import java.util.function.Function;
  * 视频转发
  */
 public class VideoFrameRedirect {
-    public static void videoRedirect(String src, String dst, Function<Frame, Frame> f) {
+    /**
+     * 视频帧转发
+     *
+     * @param src
+     * @param dst
+     * @param f
+     */
+    public static void videoFrameRedirect(String src, String dst, Function<Frame, Frame> f) {
         Try.ofCallable(new Callable<Object>() {
             @Override
             public Object call() throws Exception {
