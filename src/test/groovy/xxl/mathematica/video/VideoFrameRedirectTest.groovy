@@ -11,7 +11,7 @@ import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor
 
 class VideoFrameRedirectTest extends GroovyTestCase {
     void testVideoRedirect() {
-        VideoFrameRedirect.videoRedirect("D:\\pet.mp4", "rtmp://localhost:1935/live/abc", new Function<Frame, Frame>() {
+        VideoFrameRedirect.videoFrameRedirect("D:\\pet.mp4", "rtmp://localhost:1935/live/abc", new Function<Frame, Frame>() {
             @Override
             Frame apply(Frame frame) {
                 Mat dst = new Mat()
