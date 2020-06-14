@@ -28,7 +28,7 @@ public class VideoFrameList {
         return Try.ofCallable(new Callable<List<Rule<Integer, Frame>>>() {
             @Override
             public List<Rule<Integer, Frame>> call() throws Exception {
-                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(new File(videoFile));
+                FFmpegFrameGrabber grabber = FFmpegFrameGrabber.createDefault(videoFile);
                 grabber.start();
                 int len = grabber.getLengthInVideoFrames();
                 grabber.stop();

@@ -18,16 +18,16 @@ public class VideoFrameMap {
      * 作用函数于每个帧[index, frame]
      * index从0开始
      *
-     * @param videoFile
+     * @param video
      * @param f
      * @param <T>
      * @return
      */
-    public static <T> List<T> videoFrameMap(String videoFile, BiFunction<Integer, Frame, T> f) {
+    public static <T> List<T> videoFrameMap(String video, BiFunction<Integer, Frame, T> f) {
         return Try.ofCallable(new Callable<List<T>>() {
             @Override
             public List<T> call() throws Exception {
-                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(new File(videoFile));
+                FFmpegFrameGrabber grabber = FFmpegFrameGrabber.createDefault(video);
                 grabber.start();
                 int frameCount = grabber.getLengthInVideoFrames();
                 List<T> res = new ArrayList<>();

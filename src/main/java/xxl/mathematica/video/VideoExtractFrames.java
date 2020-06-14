@@ -27,7 +27,7 @@ public class VideoExtractFrames {
             @Override
             public List<Rule<Integer, Frame>> call() throws Exception {
                 List<Integer> indexes = new ArrayList<>(frames);
-                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(new File(videoFile));
+                FFmpegFrameGrabber grabber = FFmpegFrameGrabber.createDefault(videoFile);
                 grabber.start();
                 int frameCount = grabber.getLengthInVideoFrames();
                 List<Rule<Integer, Frame>> res = new ArrayList<>();

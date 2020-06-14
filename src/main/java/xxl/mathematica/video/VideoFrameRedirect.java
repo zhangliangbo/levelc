@@ -24,7 +24,7 @@ public class VideoFrameRedirect {
         Try.ofCallable(new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(src);//使用ffmpeg抓取器
+                FFmpegFrameGrabber grabber = FFmpegFrameGrabber.createDefault(src);//使用ffmpeg抓取器
                 grabber.start();//开启抓取器
 
                 int width = grabber.getImageWidth();
