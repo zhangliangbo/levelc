@@ -1,6 +1,7 @@
 package xxl.mathematica.video
 
 import org.bytedeco.javacv.Frame
+import org.bytedeco.javacv.IPCameraFrameGrabber
 
 import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
@@ -16,5 +17,15 @@ class VideoFrameMapTest extends GroovyTestCase {
             }
         })
         println(s)
+    }
+
+    void testVideo(){
+        IPCameraFrameGrabber grabber=new IPCameraFrameGrabber("rtmp://localhost:1935/live/test")
+        int i=100
+        grabber.start()
+        while(--i>0){
+            
+        }
+        grabber.stop()
     }
 }
