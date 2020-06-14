@@ -1,10 +1,9 @@
 package xxl.mathematica.video
 
+import java.util.function.Function
 import org.bytedeco.javacv.Frame
 import org.bytedeco.javacv.Java2DFrameUtils
 import org.bytedeco.opencv.opencv_core.Mat
-
-import java.util.function.Function
 
 import static org.bytedeco.opencv.global.opencv_imgproc.COLOR_BGR2GRAY
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor
